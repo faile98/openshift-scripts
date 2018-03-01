@@ -28,8 +28,8 @@ openshift_master_console_port=443
 
 openshift_master_cluster_method=native
 openshift_master_cluster_hostname=loadbalancer1.example.com
-openshift_master_cluster_public_hostname=loadbalancer1-${CLUSTER_ID}.oslab.opentlc.com
-openshift_master_default_subdomain=cloudapps-${CLUSTER_ID}.oslab.opentlc.com
+openshift_master_cluster_public_hostname=loadbalancer1-$CLUSTER_ID.oslab.opentlc.com
+openshift_master_default_subdomain=cloudapps-$CLUSTER_ID.oslab.opentlc.com
 
 #openshift_master_overwrite_named_certificates=true
 #openshift_master_ca_certificate={'certfile': '/root/intermediate_ca.crt', 'keyfile': '/root/intermediate_ca.key'}
@@ -150,10 +150,10 @@ master[1:3].example.com
 master[1:3].example.com
 
 [nodes]
-master[1:3].example.com openshift_node_labels="{'logging':'true', 'cluster': '${CLUSTER_ID}'}"
-infranode[1:3].example.com openshift_node_labels="{'logging':'true','openshift_schedulable':'False', 'cluster': '${CLUSTER_ID}', 'env': 'infra'}"
-node[1:6].example.com openshift_node_labels="{'logging':'true', 'cluster': '${CLUSTER_ID}', 'env': 'app'}"
-#loadbalancer1.example.com openshift_node_labels="{'logging':'true','openshift_schedulable':'False', 'cluster': '${CLUSTER_ID}', 'env': 'lb'}"
+master[1:3].example.com openshift_node_labels="{'logging':'true', 'cluster': '$CLUSTER_ID'}"
+infranode[1:3].example.com openshift_node_labels="{'logging':'true','openshift_schedulable':'False', 'cluster': '$CLUSTER_ID', 'env': 'infra'}"
+node[1:6].example.com openshift_node_labels="{'logging':'true', 'cluster': '$CLUSTER_ID', 'env': 'app'}"
+#loadbalancer1.example.com openshift_node_labels="{'logging':'true','openshift_schedulable':'False', 'cluster': '$CLUSTER_ID', 'env': 'lb'}"
 
 [nfs]
 node6.example.com

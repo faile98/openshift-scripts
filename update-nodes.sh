@@ -1,6 +1,6 @@
 export CLUSTER_ID=`hostname|cut -f2 -d-|cut -f1 -d.`
-cat ./hosts > /etc/ansible/hosts
 yum -y install ansible
+cat ./hosts > /etc/ansible/hosts
 
 ansible all -m copy -a "src=/etc/yum.repos.d/open.repo dest=/etc/yum.repos.d/open.repo"
 ansible all -m shell -a "mv /etc/yum.repos.d/redhat.{repo,disabled}"
