@@ -1,3 +1,4 @@
+yum install -y bind bind-utils
 export GUID=`hostname|cut -f2 -d-|cut -f1 -d.`
 
 HostIP1=`host infranode1-$GUID.oslab.opentlc.com ipa.opentlc.com |grep infranode | awk '{print $4}'`
@@ -24,7 +25,6 @@ ${domain} IN SOA master.${domain}.  root.${domain}.  (
   IN A ${HostIP2}
   IN A ${HostIP3}"  >  /var/named/zones/${domain}.db
 
-mv /etc/named.conf /etc/named.conf.orig
 echo "// named.conf
 options {
   listen-on port 53 { any; };

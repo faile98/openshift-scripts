@@ -1,6 +1,8 @@
 export CLUSTER_ID=`hostname|cut -f2 -d-|cut -f1 -d.`
 yum -y install ansible
-cat ./hosts > /etc/ansible/hosts
+sed 's/#log_path/log_path/' -i /etc/ansible/ansible.cfg
+cp ./hosts /etc/ansible/hosts
+sed s/\$CLUSTER_ID/${CLUSTER_ID}/ -i /etc/ansible/hosts
 
 ansible all -m copy -a "src=/etc/yum.repos.d/open.repo dest=/etc/yum.repos.d/open.repo"
 ansible all -m shell -a "mv /etc/yum.repos.d/redhat.{repo,disabled}"
